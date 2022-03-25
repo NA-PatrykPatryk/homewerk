@@ -7,8 +7,8 @@ class CRequirements: public BetterCandidatesValidator
 {
 public:
     CRequirements(int threshold)
-    : threshold(threshold)
-    {}
+    : threshold(threshold) {}
+
     bool validate(const Candidate& candidate) override
     {
         return candidate.cFluency >= threshold;

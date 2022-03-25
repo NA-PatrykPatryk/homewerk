@@ -8,6 +8,7 @@ class CppRequirements: public BetterCandidatesValidator
 public:
     CppRequirements(int threshold)
     : threshold(threshold) {}
+
     bool validate(const Candidate& candidate) override
     {
         return candidate.cppFluency >= threshold;

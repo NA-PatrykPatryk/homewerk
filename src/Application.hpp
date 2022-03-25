@@ -8,9 +8,9 @@
 class Application
 {
 public:
-    Application(std::vector<Candidate> c):candidates(c)
-    {
-    }
+    Application(std::vector<Candidate> candidate)
+    : candidates(candidate)
+    {}
 
     void setRequirements(std::unique_ptr<BetterCandidatesValidator> validator)
     {
@@ -30,6 +30,7 @@ public:
                      });
         return qualified;
     }
+    
 private:
     std::vector<Candidate> candidates;
     std::unique_ptr<BetterCandidatesValidator> requirements;
