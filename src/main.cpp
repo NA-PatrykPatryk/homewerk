@@ -2,7 +2,6 @@
 #include <iostream>
 
 #include "Application.hpp"
-#include "NewApplication.hpp"
 #include "Candidate.hpp"
 #include "solution/CooperationNeeded.hpp"
 #include "solution/CppRequirements.hpp"
@@ -17,7 +16,7 @@ int main()
         {"Ciechosław", 97, 92, 1, 25000},
         {"Domażyr", 91, 45, 0, 10000}};
 
-    NewApplication app(candidates);
+    Application app(candidates);
     app.setRequirements(std::make_unique<CooperationNeeded>());
     app.setRequirements(std::make_unique<CppRequirements>(20));
     app.setRequirements(std::make_unique<CRequirements>(0));

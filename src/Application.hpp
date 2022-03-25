@@ -1,5 +1,6 @@
 #include "Candidate.hpp"
 #include "CandidatesValidator.hpp"
+#include "BetterCandidatesValidator.hpp"
 #include <vector>
 #include <memory>
 #include <algorithm>
@@ -7,13 +8,16 @@
 class Application
 {
 public:
-    Application(std::vector<Candidate> c)
-    : candidates(c)
-    {}
-
-    void setRequirements(unsigned cpp, unsigned c, unsigned wage)
+    Application(std::vector<Candidate> c):candidates(c)
     {
-        requirements = std::make_unique<CandidatesValidator>(cpp, c, wage);
+    }
+
+    void setRequirements(std::unique_ptr<BetterCandidatesValidator> validator)
+    {
+        if (requirements == nullptr)
+            requirements = std::move(validator);
+        else
+            requirements -> add(std::move(validator));
     }
 
     std::vector<Candidate> getFilteredCandidates()
@@ -28,5 +32,5 @@ public:
     }
 private:
     std::vector<Candidate> candidates;
-    std::unique_ptr<CandidatesValidator> requirements;
+    std::unique_ptr<BetterCandidatesValidator> requirements;
 };
