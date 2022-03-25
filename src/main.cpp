@@ -19,9 +19,9 @@ int main()
 
     NewApplication app(candidates);
     app.setRequirements(std::make_unique<CooperationNeeded>());
-    app.setRequirements(std::make_unique<CppRequirements>());
-    app.setRequirements(std::make_unique<CRequirements>());
-    app.setRequirements(std::make_unique<WageRequirements>());
+    app.setRequirements(std::make_unique<CppRequirements>(20));
+    app.setRequirements(std::make_unique<CRequirements>(0));
+    app.setRequirements(std::make_unique<WageRequirements>(15000));
     
     for (auto candidate: app.getFilteredCandidates())
     {

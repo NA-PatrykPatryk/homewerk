@@ -6,8 +6,13 @@
 class WageRequirements: public BetterCandidatesValidator
 {
 public:
+    WageRequirements(int threshold)
+    : threshold(threshold)
+    {}
     bool validate(const Candidate& candidate) override
     {
-        return candidate.preferredWage <= 15000;
+        return candidate.preferredWage <= threshold;
     }
+private:
+    int threshold;
 };
